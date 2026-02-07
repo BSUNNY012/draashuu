@@ -2,12 +2,16 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+
+<!-- VERY IMPORTANT FOR MOBILE -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>For Aashu ❤️</title>
 
 <style>
 body {
   margin: 0;
-  height: 100vh;
+  min-height: 100vh;
   background: linear-gradient(to bottom, #ffd1dc, #ffe6f2);
   display: flex;
   justify-content: center;
@@ -19,8 +23,8 @@ body {
 /* floating icons */
 .float {
   position: absolute;
-  font-size: 22px;
-  opacity: 0.4;
+  font-size: 28px; /* bigger */
+  opacity: 0.5;
   animation: floatUp 8s linear infinite;
 }
 
@@ -31,10 +35,10 @@ body {
 
 .card {
   background: white;
-  padding: 30px;
-  width: 90%;
-  max-width: 420px;
-  border-radius: 25px;
+  padding: 35px;
+  width: 92%;
+  max-width: 460px; /* bigger */
+  border-radius: 28px;
   text-align: center;
   box-shadow: 0 15px 35px rgba(0,0,0,0.2);
   z-index: 2;
@@ -46,34 +50,56 @@ body {
   to { opacity: 1; transform: scale(1); }
 }
 
-h1 { color: #ff3385; }
-p { font-size: 18px; color: #444; }
-
-button {
-  padding: 12px 24px;
-  font-size: 18px;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  margin: 10px;
+h1 {
+  color: #ff3385;
+  font-size: 28px;
 }
 
-.next, #yes { background: #ff4d88; color: white; }
-#no { background: #ddd; position: absolute; }
+p {
+  font-size: 20px;
+  color: #444;
+  line-height: 1.6;
+}
+
+button {
+  padding: 14px 28px;
+  font-size: 20px;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  margin: 12px;
+}
+
+.next, #yes {
+  background: #ff4d88;
+  color: white;
+}
+
+#no {
+  background: #ddd;
+  position: absolute;
+}
 
 /* wheel */
 #wheel {
-  width: 220px;
-  height: 220px;
+  width: 260px;
+  height: 260px;
   border-radius: 50%;
-  border: 10px solid #ff4d88;
+  border: 12px solid #ff4d88;
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: bold;
+  font-size: 22px;
   background: #fff0f6;
-  margin: 20px auto;
+  margin: 25px auto;
   transition: transform 3s ease-out;
+}
+
+/* small mobile tweak */
+@media (max-width: 420px) {
+  h1 { font-size: 26px; }
+  p { font-size: 19px; }
 }
 </style>
 </head>
@@ -129,8 +155,8 @@ function step3() {
 
 function moveNo() {
   const no = document.getElementById("no");
-  no.style.left = Math.random() * (window.innerWidth - 100) + "px";
-  no.style.top = Math.random() * (window.innerHeight - 100) + "px";
+  no.style.left = Math.random() * (window.innerWidth - 120) + "px";
+  no.style.top = Math.random() * (window.innerHeight - 120) + "px";
 }
 
 function yesClick() {
@@ -149,7 +175,7 @@ function spin() {
   const wheel = document.getElementById("wheel");
   const dare = dares[Math.floor(Math.random() * dares.length)];
   wheel.style.transform =
-    "rotate(" + (360 * 5 + Math.random() * 360) + "deg)";
+    "rotate(" + (360 * 6 + Math.random() * 360) + "deg)";
   setTimeout(() => {
     document.getElementById("result").innerHTML = `
       💖 Dare for you Aashu:<br><b>${dare}</b><br><br>
@@ -166,7 +192,7 @@ setInterval(() => {
   f.className = "float";
   f.innerHTML = icons[Math.floor(Math.random() * icons.length)];
   f.style.left = Math.random() * 100 + "vw";
-  f.style.fontSize = (Math.random() * 20 + 20) + "px";
+  f.style.fontSize = (Math.random() * 25 + 26) + "px";
   document.body.appendChild(f);
   setTimeout(() => f.remove(), 8000);
 }, 600);
