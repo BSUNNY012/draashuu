@@ -2,174 +2,228 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>For Jeramae ❤️</title>
+<title>Happy Birthday ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body {
-  margin: 0;
-  height: 100vh;
-  background: linear-gradient(to bottom, #ffd1dc, #ffe6f2);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Segoe UI', sans-serif;
-  overflow: hidden;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI', sans-serif;
 }
 
-/* floating icons */
-.float {
-  position: absolute;
-  font-size: 22px;
-  opacity: 0.4;
-  animation: floatUp 8s linear infinite;
+body{
+  background: linear-gradient(135deg,#ffb6c1,#ffd1dc);
+  height:100vh;
+  overflow:hidden;
+  color:#fff;
+  text-align:center;
 }
 
-@keyframes floatUp {
-  from { transform: translateY(100vh); opacity: 0; }
-  to { transform: translateY(-10vh); opacity: 1; }
+.page{
+  display:none;
+  height:100vh;
+  width:100%;
+  padding:40px 20px;
+  position:relative;
 }
 
-.card {
-  background: white;
-  padding: 30px;
-  width: 90%;
-  max-width: 420px;
-  border-radius: 25px;
-  text-align: center;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-  z-index: 2;
-  animation: fade 1s ease;
+.page.active{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
 }
 
-@keyframes fade {
-  from { opacity: 0; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1); }
+h1{font-size:2rem;margin-bottom:20px;}
+p{font-size:1.2rem;margin-bottom:25px;line-height:1.6;}
+
+button{
+  padding:12px 28px;
+  font-size:1.1rem;
+  border:none;
+  border-radius:30px;
+  background:#ff4f81;
+  color:white;
+  cursor:pointer;
+  box-shadow:0 8px 20px rgba(0,0,0,0.2);
+  transition:0.3s;
+}
+button:hover{transform:scale(1.08);background:#ff2f6d;}
+
+/* Falling emojis */
+.fall{
+  position:absolute;
+  top:-50px;
+  animation: fall linear infinite;
+  font-size:30px;
+}
+@keyframes fall{
+  0%{transform:translateY(0);opacity:1;}
+  100%{transform:translateY(110vh);opacity:0;}
 }
 
-h1 { color: #ff3385; }
-p { font-size: 18px; color: #444; }
-
-button {
-  padding: 12px 24px;
-  font-size: 18px;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  margin: 10px;
+/* 💖 TEDDY HUG PERFECT */
+.teddy-box{
+  position:relative;
+  width:260px;
+  height:160px;
+  margin-bottom:20px;
 }
 
-.next, #yes { background: #ff4d88; color: white; }
-#no { background: #ddd; position: absolute; }
-
-/* wheel */
-#wheel {
-  width: 220px;
-  height: 220px;
-  border-radius: 50%;
-  border: 10px solid #ff4d88;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: bold;
-  background: #fff0f6;
-  margin: 20px auto;
-  transition: transform 3s ease-out;
+.teddy{
+  font-size:80px;
+  position:absolute;
+  top:40px;
 }
+
+.teddy.left{
+  left:0;
+  animation:leftHug 3s infinite;
+}
+
+.teddy.right{
+  right:0;
+  animation:rightHug 3s infinite;
+}
+
+@keyframes leftHug{
+  0%{transform:translateX(0);}
+  40%{transform:translateX(90px);}
+  60%{transform:translateX(90px);}
+  100%{transform:translateX(0);}
+}
+
+@keyframes rightHug{
+  0%{transform:translateX(0);}
+  40%{transform:translateX(-90px);}
+  60%{transform:translateX(-90px);}
+  100%{transform:translateX(0);}
+}
+
+/* ❤️ Heart appears ONLY when hugging */
+.heart{
+  position:absolute;
+  top:15px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:40px;
+  opacity:0;
+  animation:heartShow 3s infinite;
+}
+
+@keyframes heartShow{
+  0%{opacity:0;transform:translateX(-50%) scale(0.5);}
+  45%{opacity:1;transform:translateX(-50%) scale(1.2);}
+  65%{opacity:1;transform:translateX(-50%) scale(1);}
+  100%{opacity:0;transform:translateX(-50%) scale(0.5);}
+}
+
+/* Wheel */
+#wheel{
+  width:220px;
+  height:220px;
+  border-radius:50%;
+  border:8px solid white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:1.2rem;
+  background:#ff4f81;
+  margin-bottom:20px;
+  transition:transform 3s ease-out;
+}
+.result{font-size:1.2rem;margin-top:15px;}
 </style>
 </head>
 
 <body>
 
-<!-- background music -->
-<audio id="music" loop>
-  <source src="ishq-wala-love.mp3" type="audio/mpeg">
-</audio>
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+  <h1>So finally the day came after a year… 🎀</h1>
+  <p>Do you know today is the birthday of a cutie? 🥺💖</p>
+  <button onclick="nextPage(2)">Next 💕</button>
+</div>
 
-<div class="card" id="card">
-  <h1>Hello Jeramae 💖</h1>
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+  <div class="teddy-box">
+    <div class="teddy left">🧸</div>
+    <div class="heart">❤️</div>
+    <div class="teddy right">🧸</div>
+  </div>
+  <h1>It’s you babe 💞</h1>
+  <p>Today is your birthday 🎂✨</p>
+  <button onclick="nextPage(3)">Next 😘</button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page" id="page3">
+  <h1>Happy Happy Happy Birthday 🎉💖</h1>
   <p>
-    Hello future girlfriend 👩‍⚕️<br>
-    My heart already chose<br>
-    his favorite girl 💕
+    May your year be full of happiness, love and smiles ✨😊<br>
+    May all your dreams come true and you stay the same cutie 🧸💕
   </p>
-  <button class="next" onclick="step2()">Next 💗</button>
+  <p>
+    Babe, I know you will be too happy of reading this  
+    and I want this smile to stay on your face always 😍💞  
+    <br><br>
+    Once again… Happy Birthday ❤️🎂
+  </p>
+  <button onclick="nextPage(4)">🎁 Your Gift</button>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page" id="page4">
+  <h1>Spin the Dare Wheel 😈🎡</h1>
+  <div id="wheel">SPIN</div>
+  <button onclick="spin()">Spin Now 💝</button>
+  <div class="result" id="result"></div>
 </div>
 
 <script>
-const dares = [
-  "Send me a cute smile 😊",
-  "give me kiss in vc 😳",
-  "Tell me one thing you like about me 💖",
-  "Promise me a coffee date ☕",
-  "Save my name with ❤️",
-  "call me your baby 🙈"
+function nextPage(n){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page'+n).classList.add('active');
+}
+
+/* Falling emojis */
+const emojis=["🎈","🍫","🧸","🕯️","🎀","❤️"];
+setInterval(()=>{
+  let e=document.createElement("div");
+  e.className="fall";
+  e.innerText=emojis[Math.floor(Math.random()*emojis.length)];
+  e.style.left=Math.random()*100+"vw";
+  e.style.animationDuration=(3+Math.random()*4)+"s";
+  document.body.appendChild(e);
+  setTimeout(()=>e.remove(),7000);
+},400);
+
+/* Dare wheel */
+const dares=[
+"💋 Give me a virtual kiss",
+"📸 Send me your cutest photo",
+"🎶 Sing a song for me",
+"💌 Write a sweet love message",
+"🤗 Promise me a tight hug",
+"🍫 Treat me with chocolate",
+"😳 Say 'I love you' 5 times",
+"🧸 Buy me a teddy soon"
 ];
 
-function step2() {
-  document.getElementById("music").play();
-  document.getElementById("card").innerHTML = `
-    <h1>Jeramae 💕</h1>
-    <p>
-      Are you a neuron? 🧠<br>
-      Because every signal in my brain<br>
-      fires only for you ❤️
-    </p>
-    <button class="next" onclick="step3()">One last thing 😳</button>
-  `;
+let angle=0;
+function spin(){
+  const wheel=document.getElementById("wheel");
+  const result=document.getElementById("result");
+  const rand=Math.floor(Math.random()*dares.length);
+  angle+=720+rand*45;
+  wheel.style.transform="rotate("+angle+"deg)";
+  setTimeout(()=>{
+    result.innerHTML="Your Dare 😏💖<br><b>"+dares[rand]+"</b>";
+  },3000);
 }
-
-function step3() {
-  document.getElementById("card").innerHTML = `
-    <h1>So Jeramae… 💖</h1>
-    <p>Will you be my Valentine? 💘</p>
-    <button id="yes" onclick="yesClick()">YES ❤️</button>
-    <button id="no" onmouseover="moveNo()">NO 🙈</button>
-  `;
-}
-
-function moveNo() {
-  const no = document.getElementById("no");
-  no.style.left = Math.random() * (window.innerWidth - 100) + "px";
-  no.style.top = Math.random() * (window.innerHeight - 100) + "px";
-}
-
-function yesClick() {
-  document.body.innerHTML = `
-    <div class="card">
-      <h1>YOU SAID YES 😍❤️</h1>
-      <p>Spin the dare wheel 😌</p>
-      <div id="wheel">SPIN</div>
-      <button class="next" onclick="spin()">Spin 🎡</button>
-      <p id="result"></p>
-    </div>
-  `;
-}
-
-function spin() {
-  const wheel = document.getElementById("wheel");
-  const dare = dares[Math.floor(Math.random() * dares.length)];
-  wheel.style.transform =
-    "rotate(" + (360 * 5 + Math.random() * 360) + "deg)";
-  setTimeout(() => {
-    document.getElementById("result").innerHTML = `
-      💖 Dare for you Jeramae:<br><b>${dare}</b><br><br>
-      No matter the dare…<br>
-      I’m already lucky to have your YES 💕
-    `;
-  }, 3000);
-}
-
-/* floating icons */
-setInterval(() => {
-  const icons = ["💖","🧸","🍫","🫀","🩺","🧬"];
-  const f = document.createElement("div");
-  f.className = "float";
-  f.innerHTML = icons[Math.floor(Math.random() * icons.length)];
-  f.style.left = Math.random() * 100 + "vw";
-  f.style.fontSize = (Math.random() * 20 + 20) + "px";
-  document.body.appendChild(f);
-  setTimeout(() => f.remove(), 8000);
-}, 600);
 </script>
 
 </body>
